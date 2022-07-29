@@ -1,3 +1,8 @@
+-- Disable plugins (TO-DO: rearrange)
+
+vim.g.loaded_vimtex = 1
+vim.g.vimtex_enabled = 1
+
 require "user.options"
 require "user.keymaps"
 require "user.plugins"
@@ -19,6 +24,8 @@ require "user.indentline"
 require "user.alpha"
 require "user.whichkey"
 require "user.autocommands"
+
+-- TO-DO: rearrange
 
 vim.cmd([[
 	set nocompatible            " disable compatibility to old-time vi
@@ -69,13 +76,23 @@ vim.cmd('autocmd! BufNew,BufRead *.tex silent! VimtexCompile')
 
 -- Snippets
 
-vim.opt.UltiSnipsListSnippets = "<C-q>"
-vim.opt.UltiSnipsExpandTrigger = "<Tab>"
-vim.opt.UltiSnipsJumpForwardTrigger = "<C-j>"
-vim.opt.UltiSnipsJumpBackwardTrigger = "<C-k>"
-vim.opt.UltiSnipsSnippetsDir = 'UltiSnips'
-vim.opt.UltiSnipsSnippetDirectories = {'UltiSnips'}
-vim.opt.UltiSnipsEnableSnipMate = 0
+if vim.fn.exists('opt:UltiSnipsListSnippets') ~= 0 then
+	vim.opt.UltiSnipsListSnippets = "<C-q>"
+	vim.opt.UltiSnipsExpandTrigger = "<Tab>"
+	vim.opt.UltiSnipsJumpForwardTrigger = "<C-j>"
+	vim.opt.UltiSnipsJumpBackwardTrigger = "<C-k>"
+	vim.opt.UltiSnipsSnippetsDir = 'UltiSnips'
+	vim.opt.UltiSnipsSnippetDirectories = {'UltiSnips'}
+	vim.opt.UltiSnipsEnableSnipMate = 0
+end
+
+-- Neovide
+
+if vim.fn.exists("g:neovide") then
+	vim.g.neovide_confirm_quit = 1
+	vim.g.neovide_cursor_animation_length = 0
+	vim.g.neovide_scroll_animation_length = 0
+end
 
 -- Keys
 
@@ -83,5 +100,5 @@ vim.api.nvim_set_keymap('i', '<C-Right>', '<Esc>we<Insert>', {noremap = true})
 vim.api.nvim_set_keymap('i', '<C-Left>', '<Esc>b<Insert>', {noremap = true})
 vim.api.nvim_set_keymap('i', '<C-y>', ':redo<CR>', {noremap = true})
 --vim.api.nvim_set_keymap('i', '<M-`>', '`', {noremap = true})
-vim.api.nvim_set_keymap('i', '<C-S>', '<ESC>:w<CR>')
+vim.api.nvim_set_keymap('i', '<C-S>', '<ESC>:w<CR>', {noremap = false})
 vim.api.nvim_set_keymap('n', '<C-S>', '<ESC>:w<CR>', {noremap = false})
