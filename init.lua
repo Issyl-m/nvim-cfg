@@ -98,7 +98,8 @@ end
 
 vim.api.nvim_set_keymap('i', '<C-Right>', '<Esc>we<Insert>', {noremap = true})
 vim.api.nvim_set_keymap('i', '<C-Left>', '<Esc>b<Insert>', {noremap = true})
-vim.api.nvim_set_keymap('i', '<C-y>', ':redo<CR>', {noremap = true})
+vim.api.nvim_set_keymap('i', '<C-y>', '<Esc>:redo<CR>', {noremap = true})
 --vim.api.nvim_set_keymap('i', '<M-`>', '`', {noremap = true})
-vim.api.nvim_set_keymap('i', '<C-S>', '<ESC>:w<CR>', {noremap = false})
-vim.api.nvim_set_keymap('n', '<C-S>', '<ESC>:w<CR>', {noremap = false})
+vim.api.nvim_set_keymap('i', '<C-S>', '<Esc>:w<CR>a', {noremap = false})
+vim.api.nvim_set_keymap('n', '<C-S>', '<Esc>:w<CR>', {noremap = false})
+vim.api.nvim_set_keymap('i', '<TAB>', '<CT>', {noremap = false})

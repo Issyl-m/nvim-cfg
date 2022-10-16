@@ -169,6 +169,32 @@ snippet enum "Enumerate alph" bi
 \end{enumerate}
 endsnippet
 
+snippet kat "CD" bi
+\begin{center}
+    \begin{tikzpicture}[baseline= (a).base]
+        \node[scale=1.1] (a) at (0,0){
+        \begin{tikzcd}[row sep=large, column sep=large]
+            $1 \arrow[r, "f"]     \arrow[d, "\pi"]   &$2  \arrow[d, "\pi"] \\\\
+            $3 \arrow[r, "f_{*}"]                    &$4        
+        \end{tikzcd}
+        };
+    \end{tikzpicture}
+\end{center}$0
+endsnippet
+
+snippet PUU "PropUniversal"
+\begin{center}
+	\begin{tikzpicture}[baseline= (a).base]
+		\node[scale=1.1] (a) at (0,0){
+		\begin{tikzcd}[row sep=large, column sep=large]
+			 X \arrow[r, "f"]     \arrow[d, "\pi"]   &Y \\\\
+			 Z \arrow[ru, "\tilde{f}", shift left=.0ex]            
+		\end{tikzcd}
+		};
+	\end{tikzpicture}
+\end{center}$0
+endsnippet
+
 snippet gatheral "Gather" bi
 \begin{gather}
 	\begin{aligned}
@@ -212,12 +238,16 @@ snippet pmat "pmat" iA
 \begin{pmatrix} $1 \end{pmatrix} $0
 endsnippet
 
+snippet +++ "directsum" iA
+\oplus $0
+endsnippet
+
 snippet tttens "tttens" iA
 \otimes $0
 endsnippet
 
 snippet fffun "fffun" iA
-$1 \colon $2 \to $3 $0 
+$1 \colon $2 \to $3
 endsnippet
 
 snippet ssset "ssset" iA
@@ -271,6 +301,10 @@ endsnippet
 ########
 # MATH #
 ########
+snippet vesp "varepsilon" w
+\varepsilon
+endsnippet
+
 snippet aabs "a" iA
 \lvert {$1} \rvert $0
 endsnippet
@@ -334,11 +368,11 @@ snippet dm "Display Math" w
 endsnippet
 
 snippet foralll "forall" iA
-(\forall $1 \in $2) $3 ;\ $0
+(\forall $1 \in $2) $3 \;\; $0
 endsnippet
 
 snippet existsss "exists" iA
-(\exists $1 \in $2) $3 ;\ $0
+(\exists $1 \in $2) $3 \;\; $0
 endsnippet
 
 snippet // "Fraction" iA
@@ -362,7 +396,7 @@ snippet lra "Inner product" iA
 endsnippet
 
 snippet compl "Complement" i
-^{c}
+^\mathsf{c}
 endsnippet
 
 snippet ss "Super Script" i
@@ -552,7 +586,7 @@ endsnippet
 #endsnippet
 
 priority 100
-snippet "([a-zA-Z])bar" "bar" riA
+snippet "([a-zA-Z])barr" "bar" riA
 \overline{`!p snip.rv=match.group(1)`}
 endsnippet
 
@@ -572,7 +606,7 @@ endsnippet
 #endsnippet
 
 priority 100
-snippet "([a-zA-Z])hat" "hat" riA
+snippet "([a-zA-Z])hatt" "hat" riA
 \hat{`!p snip.rv=match.group(1)`}
 endsnippet
 
@@ -747,12 +781,12 @@ endsnippet
 
 context "math()"
 snippet { "left{" i
-\left{
+\left\\{
 endsnippet
 
 context "math()"
 snippet } "right}" i
-\right}
+\right\\}
 endsnippet
 
 
